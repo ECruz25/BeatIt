@@ -32,6 +32,14 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Enemigo.cpp" />
+		<Unit filename="Enemigo.h" />
+		<Unit filename="EnemigoAzul.cpp" />
+		<Unit filename="EnemigoAzul.h" />
+		<Unit filename="EnemigoRojo.cpp" />
+		<Unit filename="EnemigoRojo.h" />
+		<Unit filename="EnemigoVerde.cpp" />
+		<Unit filename="EnemigoVerde.h" />
 		<Unit filename="Sho.cpp" />
 		<Unit filename="Sho.h" />
 		<Unit filename="main.cpp" />

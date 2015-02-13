@@ -1,8 +1,13 @@
+
 #include<SDL2/SDL.h>
 #include<SDL2/SDL_image.h>
 #include<iostream>
 #include<vector>
+#include<list>
 #include "Sho.h"
+#include "EnemigoAzul.h"
+#include "EnemigoVerde.h"
+#include "EnemigoRojo.h"
 
 using namespace std;
 
@@ -43,12 +48,18 @@ int main( int argc, char* args[] )
 
     Sho sho(renderer);
 
+    list<Enemigo*> enemigos;
+    enemigos.push_back(new EnemigoAzul(renderer));
+    enemigos.push_back(new EnemigoVerde(renderer));
+    enemigos.push_back(new EnemigoRojo(renderer));
+
     //Main Loop
     int frame=0;
-//    int animacion_sho = 0;
-    bool pausa=false;
+    int animacion_sho = 0;
+    bool pause = false;
+    bool done = true;
     const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
-    while(true)
+    while(!currentKeyStates[SDL_SCANCODE_ESCAPE])
     {
         while(SDL_PollEvent(&Event))
         {
@@ -58,26 +69,42 @@ int main( int argc, char* args[] )
             }
         }
 
+        if(frame%200==0)
+        {
+            enemigos.push_back(new EnemigoAzul(renderer));
+        }
+
         if(currentKeyStates[SDL_SCANCODE_P])
-            pausa=true;
+            pause=true;
 
         if(currentKeyStates[SDL_SCANCODE_O])
-            pausa=false;
+            pause=false;
 
-        if(pausa==false)
+        if(pause==false)
             sho.act();
+
+        for(list<Enemigo*>::iterator e=enemigos.begin();
+                e!=enemigos.end();
+                e++)
+            (*e)->act();
 
         SDL_SetRenderDrawColor(renderer, 255, 100, 0, 255);
 
         // Clear the entire screen to our selected color.
-
-        if(pausa==false){
+        if(pause==false){
 
             SDL_RenderClear(renderer);
             SDL_RenderCopy(renderer, background, NULL, &rect_background);
             sho.draw(renderer);
 
+
+//            for(list<Enemigo*>::iterator e=enemigos.begin();
+//                e!=enemigos.end();
+//                e++)
+//            (*e)->draw(renderer);
+
         }
+
 
         SDL_RenderPresent(renderer);
 
@@ -86,7 +113,6 @@ int main( int argc, char* args[] )
 
 	return 0;
 }
-
 
 
 
