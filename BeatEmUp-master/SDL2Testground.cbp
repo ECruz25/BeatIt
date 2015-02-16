@@ -40,12 +40,15 @@
 		<Unit filename="EnemigoRojo.h" />
 		<Unit filename="EnemigoVerde.cpp" />
 		<Unit filename="EnemigoVerde.h" />
+		<Unit filename="Personaje.cpp" />
+		<Unit filename="Personaje.h" />
 		<Unit filename="Sho.cpp" />
 		<Unit filename="Sho.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

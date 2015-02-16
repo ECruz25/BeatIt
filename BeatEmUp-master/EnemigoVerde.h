@@ -3,14 +3,11 @@
 
 #include "Enemigo.h"
 
-class EnemigoVerde : public Enemigo
-{
-    public:
-        EnemigoVerde(SDL_Renderer* renderer);
-        virtual ~EnemigoVerde();
-        void act();
-    protected:
-    private:
+class EnemigoVerde : public Enemigo {
+  public:
+    EnemigoVerde(SDL_Renderer* renderer, list<Personaje*> *personajes);
+    ~EnemigoVerde();
+    void act();
 };
 
 #endif // ENEMIGOVERDE_H
