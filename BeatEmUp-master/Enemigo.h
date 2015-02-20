@@ -3,9 +3,10 @@
 
 #include "Personaje.h"
 
-class Enemigo : public Personaje {
-  public:
-    Enemigo();
-    ~Enemigo();
+class Enemigo : public Personaje
+{
+    public:
+        Enemigo();
+        ~Enemigo();
 };
 #endif // ENEMIGO_H

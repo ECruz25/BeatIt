@@ -1,29 +1,29 @@
 # depslib dependency file v1.0
-1423852710 source:c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\enemigo.cpp
+1424450087 source:c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\enemigo.cpp
 	"Enemigo.h"
 
-1423852852 c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\enemigo.h
+1424450087 c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\enemigo.h
 	"Personaje.h"
 
-1423855987 source:c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\enemigoazul.cpp
+1424450087 source:c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\enemigoazul.cpp
 	"EnemigoAzul.h"
 
-1423855975 c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\enemigoazul.h
+1424450087 c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\enemigoazul.h
 	"Enemigo.h"
 
-1423856000 source:c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\enemigorojo.cpp
+1424450087 source:c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\enemigorojo.cpp
 	"EnemigoRojo.h"
 
-1423856012 c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\enemigorojo.h
+1424450087 c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\enemigorojo.h
 	"Enemigo.h"
 
-1423856022 source:c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\enemigoverde.cpp
+1424450087 source:c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\enemigoverde.cpp
 	"EnemigoVerde.h"
 
-1423856012 c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\enemigoverde.h
+1424450087 c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\enemigoverde.h
 	"Enemigo.h"
 
-1423856431 source:c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\main.cpp
+1424450555 source:c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\main.cpp
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<iostream>
@@ -34,18 +34,22 @@
 	"EnemigoVerde.h"
 	"EnemigoRojo.h"
 
-1423856401 c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\sho.h
+1424450351 c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\sho.h
+	<vector>
+	<iostream>
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
 	"Personaje.h"
 
-1423856401 source:c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\sho.cpp
+1424450555 source:c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\sho.cpp
 	"Sho.h"
 
-1423855734 c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\personaje.h
+1424450626 c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\personaje.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<vector>
 	<list>
 
-1423857000 source:c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\personaje.cpp
+1424450849 source:c:\users\edwin\documents\clases unitec\lab. programacion 3\beatit\beatemup-master\personaje.cpp
 	"Personaje.h"
 
