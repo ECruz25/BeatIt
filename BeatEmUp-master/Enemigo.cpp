@@ -2,12 +2,10 @@
 
 Enemigo::Enemigo()
 {
-
+    //ctor
 }
 
 Enemigo::~Enemigo()
 {
     //dtor
 }
-
-

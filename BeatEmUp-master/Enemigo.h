@@ -6,7 +6,12 @@
 class Enemigo : public Personaje
 {
     public:
+
         Enemigo();
-        ~Enemigo();
+        virtual ~Enemigo();
+        bool bounce;
+    protected:
+    private:
 };
+
 #endif // ENEMIGO_H

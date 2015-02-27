@@ -14,20 +14,29 @@ SDL_Window* window;
 SDL_Renderer* renderer;
 SDL_Event Event;
 SDL_Texture *background;
-SDL_Rect rect_background, rect_pausa;
+SDL_Rect rect_background;
+SDL_Texture* game_over;
+SDL_Texture* win;
+SDL_Rect rect_game_over;
+SDL_Rect rect_win;
 
-int main( int argc, char* args[] ) {
+
+int main( int argc, char* args[] )
+{
     //Init SDL
-    if(SDL_Init(SDL_INIT_EVERYTHING) < 0) {
+    if(SDL_Init(SDL_INIT_EVERYTHING) < 0)
+    {
         return 10;
     }
     //Creates a SDL Window
-    if((window = SDL_CreateWindow("Image Loading", 100, 100, 1024/*WIDTH*/, 768/*HEIGHT*/, SDL_WINDOW_RESIZABLE | SDL_RENDERER_PRESENTVSYNC)) == NULL) {
+    if((window = SDL_CreateWindow("Image Loading", 100, 100, 1024/*WIDTH*/, 768/*HEIGHT*/, SDL_WINDOW_RESIZABLE | SDL_RENDERER_PRESENTVSYNC)) == NULL)
+    {
         return 20;
     }
-  //SDL Renderer
+    //SDL Renderer
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED );
-    if (renderer == NULL) {
+    if (renderer == NULL)
+    {
         std::cout << SDL_GetError() << std::endl;
         return 30;
     }
@@ -35,24 +44,25 @@ int main( int argc, char* args[] ) {
     //Init textures
     int w=0,h=0;
     background = IMG_LoadTexture(renderer,"fondo.png");
+
+    game_over = IMG_LoadTexture(renderer,"gameover.png");
+    SDL_RenderCopy(renderer, game_over, NULL, &rect_game_over);
+
     SDL_QueryTexture(background, NULL, NULL, &w, &h);
     rect_background.x = 0;
     rect_background.y = 0;
     rect_background.w = w;
     rect_background.h = h;
 
-//    Sho sho(renderer);
-
     list<Personaje*> personajes;
-    personajes.push_back(new Sho(renderer, &personajes));
-    personajes.push_back(new EnemigoAzul(renderer, &personajes));
-    personajes.push_back(new EnemigoVerde(renderer, &personajes));
-    personajes.push_back(new EnemigoRojo(renderer, &personajes));
+    personajes.push_back(new Sho(renderer,&personajes));
+    personajes.push_back(new EnemigoAzul(renderer,&personajes));
+    personajes.push_back(new EnemigoVerde(renderer,&personajes));
+    personajes.push_back(new EnemigoRojo(renderer,&personajes));
 
-  //Main Loop
+    //Main Loop
     int frame=0;
-//    int animacion_sho = 0;
-    bool pause = false;
+    int animacion_sho = 0;
     const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
     while(!currentKeyStates[SDL_SCANCODE_ESCAPE])
     {
@@ -64,54 +74,55 @@ int main( int argc, char* args[] ) {
             }
         }
 
-        if(currentKeyStates[SDL_SCANCODE_P])
-        {
-            pause=true;
-        }
+//        if(frame%1000==0)
+//        {
+//            personajes.push_back(new EnemigoAzul(renderer,&personajes));
+//        }
 
-        if(currentKeyStates[SDL_SCANCODE_O])
-        {
-            pause=false;
-        }
-
-        if(pause==false)
-        {
-
-            for(list<Personaje*>::iterator p=personajes.begin(); p!=personajes.end(); p++)
-            {
-                (*p)->act();
-            }
-
-        }
-
-        for(list<Personaje*>::iterator p=personajes.begin(); p!=personajes.end(); p++)
-        {
+        for(list<Personaje*>::iterator p=personajes.begin();
+                p!=personajes.end();
+                p++)
             (*p)->act();
-        }
 
         SDL_SetRenderDrawColor(renderer, 255, 100, 0, 255);
 
-        if(pause==false)
-        {
-            SDL_RenderClear(renderer);
-            SDL_RenderCopy(renderer, background, NULL, &rect_background);
+        // Clear the entire screen to our selected color.
+        SDL_RenderClear(renderer);
 
-            for(list<Personaje*>::iterator p=personajes.begin(); p!=personajes.end(); p++)
+        SDL_RenderCopy(renderer, background, NULL, &rect_background);
+
+        for(list<Personaje*>::iterator p=personajes.begin();
+                p!=personajes.end();
+                p++)
+            (*p)->draw(renderer);
+
+        for(list<Personaje*>::iterator p=personajes.begin();
+                p!=personajes.end();
+                p++)
+            if((*p)->muerto)
             {
-                (*p)->draw(renderer);
+                personajes.erase(p);
+                if((*p)->type != "sho" && (*p)->muertos>= 3)
+                {
+                        (*p)->muerto = true;
+                        personajes.clear();
+                        background = IMG_LoadTexture(renderer,"win.png");
+                        cout<<"ganaste"<<endl;
+                }
+                else if((*p)->type == "sho")
+                {
+                        (*p)->muerto = true;
+                        personajes.clear();
+                        background = IMG_LoadTexture(renderer,"gameover.png");
+                        cout<<"perdiste"<<endl;
+                }
+                break;
             }
 
-        }
-
         SDL_RenderPresent(renderer);
+
         frame++;
-
     }
-    return 0;
+
+	return 0;
 }
-
-
-
-
-
-

@@ -6,9 +6,12 @@
 class EnemigoVerde : public Enemigo
 {
     public:
-        EnemigoVerde(SDL_Renderer* renderer, list<Personaje*> *personajes);
-        ~EnemigoVerde();
+        EnemigoVerde(SDL_Renderer* renderer,list<Personaje*> *personajes);
+        virtual ~EnemigoVerde();
+        int counter;
         void act();
+    protected:
+    private:
 };
 
 #endif // ENEMIGOVERDE_H
